@@ -42,6 +42,17 @@
         text-decoration: none;
         color: #000;
       }
+      .donate {
+        width: 70px;
+        height: 30px;
+      }
+
+      p.cafezinho a,
+      p {
+        text-decoration: none;
+        color: #000;
+        font-size: small;
+      }
     </style>
   </head>
   <body>
@@ -118,7 +129,49 @@
   <footer>
     <p>
       Desenvolvido por:
-      <a class="footer" href="munhoz-dev.web.app">Paulo Munhoz</a> &copy 2024
+      <a class="footer" href="http://munhoz-dev.web.app">Paulo Munhoz</a> &copy
+      2024
+    </p>
+
+    <form
+      class="donate"
+      action="https://www.paypal.com/donate"
+      method="post"
+      target="_top"
+    >
+      <input type="hidden" name="business" value="NNLQ5J4P5A5J4" />
+      <input type="hidden" name="no_recurring" value="0" />
+      <input
+        type="hidden"
+        name="item_name"
+        value="Me ajude a continuar desenvolvendo ferramentas gratuitas!"
+      />
+      <input type="hidden" name="currency_code" value="BRL" />
+      <input
+        type="image"
+        src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif"
+        border="0"
+        name="submit"
+        title="Me paga um café pelo PayPal"
+        alt="Faça doações com o botão do PayPal"
+      />
+      <img
+        alt=""
+        border="0"
+        src="https://www.paypal.com/pt_BR/i/scr/pixel.gif"
+        width="1"
+        height="1"
+      />
+      <br />
+    </form>
+    <br />
+    <p class="cafezinho">ou</p>
+    <p class="cafezinho">
+      <a
+        href="https://nubank.com.br/cobrar/4dtz7/663387e0-56a7-4ce4-9184-1bc4617a075e"
+        title="Se preferir pelo pix!"
+        >Um cafézinho no PIX
+      </a>
     </p>
   </footer>
 </html>
