@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      label {
+        margin-right: 0.5rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .result {
+        background-color: #e9ecef;
+        padding: 1rem;
+        margin-top: 1rem;
+        line-height: 1.5rem;
+      }
+      .footer {
+        text-decoration: none;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Calculadora de Idade Gestacional</h1>
+    <form id="form">
+      <label for="data-nascimento">Data de Nascimento:</label>
+      <input type="date" id="data-nascimento" required />
+
+      <label for="semanas-nascimento">Semanas de Nascimento:</label>
+      <input
+        type="number"
+        id="semanas-nascimento"
+        min="0"
+        placeholder="Ex: 36"
+        required
+      />
+
+      <label for="dias-nascimento">Dias de Nascimento:</label>
+      <input
+        type="number"
+        id="dias-nascimento"
+        min="0"
+        max="6"
+        placeholder="Ex: 3"
+      />
+
+      <label for="data-atual">Data Atual:</label>
+      <input type="date" id="data-atual" required />
+
+      <button type="submit">Calcular</button>
+    </form>
+
+    <div class="result" id="resultado"></div>
+
+    <script>
+      const form = document.getElementById("form");
+      const resultado = document.getElementById("resultado");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const dataNascimento = new Date(
+          document.getElementById("data-nascimento").value
+        );
+        const semanasNascimento = parseInt(
+          document.getElementById("semanas-nascimento").value
+        );
+        const diasNascimento = parseInt(
+          document.getElementById("dias-nascimento").value
+        );
+        const idadeGestacionalEmDias = semanasNascimento * 7 + diasNascimento;
+        const dataAtual = new Date(document.getElementById("data-atual").value);
+        const diferençaEmDias = Math.floor(
+          (dataAtual - dataNascimento) / (1000 * 60 * 60 * 24)
+        );
+        const diasDeVida = diferençaEmDias - idadeGestacionalEmDias;
+
+        // Corrigindo o cálculo de dias de vida para nunca ser negativo
+        const diasDeVidaAbsolutos = Math.abs(diasDeVida);
+
+        let mensagem = "";
+        if (diasDeVidaAbsolutos < 30) {
+          mensagem = `O bebê tem ${diasDeVidaAbsolutos} dias de vida.`;
+        } else {
+          const meses = Math.floor(diasDeVidaAbsolutos / 30);
+          const diasRestantes = diasDeVidaAbsolutos % 30;
+          mensagem = `O bebê tem ${meses} meses e ${diasRestantes} dias de vida.`;
+        }
+
+        resultado.innerHTML = mensagem;
+      });
+    </script>
+  </body>
+  <footer>
+    <p>
+      Desenvolvido por:
+      <a class="footer" href="munhoz-dev.web.app">Paulo Munhoz</a> &copy 2024
+    </p>
+  </footer>
+</html>
