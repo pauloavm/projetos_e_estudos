@@ -84,6 +84,14 @@
         display: flex;
         justify-content: center;
         gap: 1rem;
+        align-items: center;
+      }
+      .pagamentos p {
+        display: block;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
       }
     </style>
   </head>
@@ -124,46 +132,48 @@
       <button type="submit">Calcular</button>
     </form>
     <div class="result" id="resultado"></div>
-    <div class="pagamentos">
-      <form
-        class="donate"
-        action="https://www.paypal.com/donate"
-        method="post"
-        target="_top"
-      >
-        <input type="hidden" name="business" value="NNLQ5J4P5A5J4" />
-        <input type="hidden" name="no_recurring" value="0" />
-        <input
-          type="hidden"
-          name="item_name"
-          value="Me ajude a continuar desenvolvendo ferramentas gratuitas!"
-        />
-        <input type="hidden" name="currency_code" value="BRL" />
-        <input
-          type="image"
-          src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif"
-          border="0"
-          name="submit"
-          title="Me paga um café pelo PayPal"
-          alt="Faça doações com o botão do PayPal"
-        />
-        <img
-          alt=""
-          border="0"
-          src="https://www.paypal.com/pt_BR/i/scr/pixel.gif"
-          width="1"
-          height="1"
-        />
-      </form>
-      <p class="cafezinho">ou</p>
-      <p class="cafezinho">
-        <a
-          href="https://nubank.com.br/cobrar/4dtz7/663387e0-56a7-4ce4-9184-1bc4617a075e"
-          title="Se preferir pelo pix!"
-          >Um cafézinho no PIX
-        </a>
-      </p>
-    </div>
+
+    <footer>
+      <div class="pagamentos">
+        <form
+          class="donate"
+          action="https://www.paypal.com/donate"
+          method="post"
+          target="_top"
+        >
+          <input type="hidden" name="business" value="NNLQ5J4P5A5J4" />
+          <input type="hidden" name="no_recurring" value="0" />
+          <input
+            type="hidden"
+            name="item_name"
+            value="Me ajude a continuar desenvolvendo ferramentas gratuitas!"
+          />
+          <input type="hidden" name="currency_code" value="BRL" />
+          <input
+            type="image"
+            src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif"
+            border="0"
+            name="submit"
+            title="Me paga um café pelo PayPal"
+            alt="Faça doações com o botão do PayPal"
+          />
+          <img
+            alt=""
+            border="0"
+            src="https://www.paypal.com/pt_BR/i/scr/pixel.gif"
+            width="1"
+            height="1"
+          />
+        </form>
+        <p class="cafezinho">
+          <a
+            href="https://nubank.com.br/cobrar/4dtz7/663387e0-56a7-4ce4-9184-1bc4617a075e"
+            title="Se preferir pelo pix!"
+            >Ou um cafézinho no PIX
+          </a>
+        </p>
+      </div>
+    </footer>
     <script>
       const dataNascimentoInput = document.getElementById("data-nascimento");
       const dataAtualInput = document.getElementById("data-atual");
@@ -192,12 +202,6 @@
       form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        // Validação do formulário
-        if (!validarFormulario()) {
-          alert("Preencha todos os campos corretamente.");
-          return;
-        }
-
         const dataNascimento = new Date(
           document.getElementById("data-nascimento").value
         );
@@ -212,46 +216,22 @@
         const diferençaEmDias = Math.floor(
           (dataAtual - dataNascimento) / (1000 * 60 * 60 * 24)
         );
-        const diasDeVida = diferençaEmDias / 30;
+        const diasDeVida = diferençaEmDias - idadeGestacionalEmDias;
 
-        // Corrigindo o cálculo de meses e dias de vida
-        const mesesDeVida = Math.floor(diasDeVida);
-        const diasRestantes = Math.round((diasDeVida - mesesDeVida) * 30);
+        // Corrigindo o cálculo de dias de vida para nunca ser negativo
+        const diasDeVidaAbsolutos = Math.abs(diasDeVida);
 
         let mensagem = "";
-        if (mesesDeVida === 0) {
-          mensagem = `O bebê tem {mesesDeVida} meses e ${diasRestantes} dias de vida.`;
+        if (diasDeVidaAbsolutos < 30) {
+          mensagem = `O bebê tem ${diasDeVidaAbsolutos} dias de vida.`;
+        } else {
+          const meses = Math.floor(diasDeVidaAbsolutos / 30);
+          const diasRestantes = diasDeVidaAbsolutos % 30;
+          mensagem = `O bebê tem ${meses} meses e ${diasRestantes} dias de vida.`;
         }
 
         resultado.innerHTML = mensagem;
       });
-
-      function validarFormulario() {
-        const dataNascimento = document.getElementById("data-nascimento").value;
-        const semanasNascimento =
-          document.getElementById("semanas-nascimento").value;
-        const diasNascimento = document.getElementById("dias-nascimento").value;
-        const dataAtual = document.getElementById("data-atual").value;
-
-        if (
-          dataNascimento === "" ||
-          semanasNascimento === "" ||
-          diasNascimento === "" ||
-          dataAtual === ""
-        ) {
-          return false;
-        }
-
-        if (semanasNascimento < 0 || semanasNascimento > 42) {
-          return false;
-        }
-
-        if (diasNascimento < 0 || diasNascimento > 6) {
-          return false;
-        }
-
-        return true;
-      }
     </script>
   </body>
 </html>
