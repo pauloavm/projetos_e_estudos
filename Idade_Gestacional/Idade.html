@@ -8,25 +8,21 @@
       body {
         margin: 0;
         padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
         font-family: Arial, sans-serif;
       }
 
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
       form {
-        width: 60%;
+        width: 300px;
+        margin-top: 1rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
-      }
-
-      @media (max-width: 768px) {
-        #form,
-        .result {
-          width: 100%;
-        }
       }
 
       label {
@@ -34,12 +30,12 @@
       }
 
       input {
-        width: 60%;
+        width: 300px;
         padding: 0.5rem;
         border: 1px solid #ccc;
         border-radius: 4px;
-        display: flex;
       }
+
       .buttons-container {
         text-align: center;
       }
@@ -60,31 +56,13 @@
         background-color: #e9ecef;
         padding: 1rem;
         line-height: 1.5rem;
+        text-align: center;
+        width: 300px;
       }
 
       .footer {
-        margin: 0 auto;
-        width: 100%;
-        text-decoration: none;
-        color: #000;
-      }
-
-      .donate {
-        width: 70px;
-        height: 30px;
-      }
-
-      p.cafezinho a,
-      p {
-        text-decoration: none;
-        color: #000;
-        font-size: small;
-      }
-
-      @media (max-width: 768px) {
-        .footer {
-          text-align: center;
-        }
+        margin-top: 1rem;
+        text-align: center;
       }
 
       .pagamentos {
@@ -96,8 +74,8 @@
   </head>
 
   <body>
-    <h1>Calculadora de Idade Gestacional</h1>
-    <div class="input-container">
+    <div class="container">
+      <h1>Calculadora de Idade Gestacional</h1>
       <form id="form">
         <label for="data-nascimento">Data de Nascimento (dd/mm/aaaa):</label>
         <input
@@ -134,47 +112,52 @@
           <button type="button" onclick="limparFormulario()">Limpar</button>
         </div>
       </form>
-    </div>
-    <div class="result" id="resultado"></div>
-    <div class="pagamentos">
-      <form
-        class="donate"
-        action="https://www.paypal.com/donate"
-        method="post"
-        target="_top"
-      >
-        <input type="hidden" name="business" value="NNLQ5J4P5A5J4" />
-        <input type="hidden" name="no_recurring" value="0" />
-        <input
-          type="hidden"
-          name="item_name"
-          value="Me ajude a continuar desenvolvendo ferramentas gratuitas!"
-        />
-        <input type="hidden" name="currency_code" value="BRL" />
-        <input
-          type="image"
-          src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif"
-          border="0"
-          name="submit"
-          title="Me paga um café pelo PayPal"
-          alt="Faça doações com o botão do PayPal"
-        />
-        <img
-          alt=""
-          border="0"
-          src="https://www.paypal.com/pt_BR/i/scr/pixel.gif"
-          width="1"
-          height="1"
-        />
-      </form>
-      <p class="cafezinho">ou</p>
-      <p class="cafezinho">
-        <a
-          href="https://nubank.com.br/cobrar/4dtz7/663387e0-56a7-4ce4-9184-1bc4617a075e"
-          title="Se preferir pelo pix!"
-          >Um cafézinho no PIX
-        </a>
-      </p>
+      <div class="result" id="resultado"></div>
+      <footer>
+      <div class="footer">
+        <div class="pagamentos">
+          <form
+            class="donate"
+            action="https://www.paypal.com/donate"
+            method="post"
+            target="_top"
+          >
+            <input type="hidden" name="business" value="NNLQ5J4P5A5J4" />
+            <input type="hidden" name="no_recurring" value="0" />
+            <input
+              type="hidden"
+              name="item_name"
+              value="Me ajude a continuar desenvolvendo ferramentas gratuitas!"
+            />
+            <input type="hidden" name="currency_code" value="BRL" />
+            <input
+              type="image"
+              src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif"
+              border="0"
+              name="submit"
+              title="Me paga um café pelo PayPal"
+              alt="Faça doações com o botão do PayPal"
+            />
+            <img
+              alt=""
+              border="0"
+              src="https://www.paypal.com/pt_BR/i/scr/pixel.gif"
+              width="1"
+              height="1"
+            />
+          </form>
+          <p class="cafezinho">ou</p>
+          <p class="cafezinho">
+            <a
+              href="https://nubank.com.br/cobrar/4dtz7/663387e0-56a7-4ce4-9184-1bc4617a075e"
+              title="Se preferir pelo pix!"
+              >Um cafézinho no PIX
+            </a>
+          </p>
+        </div>
+      </footer>
+
+      </div>
     </div>
     <script>
       const form = document.getElementById("form");
