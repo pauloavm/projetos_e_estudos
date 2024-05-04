@@ -36,7 +36,7 @@ header {
   width: 400px;
 }
 
-#search-input::placeholder {
+#search::placeholder {
   color: #ddd;
 }
 
@@ -44,14 +44,14 @@ header {
   background-color: #333;
   border: 2px solid #fff;
   border-radius: 4px;
-  color: #f8f7f4;
+  color: #fff;
   padding: 5px 15px;
   cursor: pointer;
   transition: 0.4s;
 }
 
 #export-notes:hover {
-  background-color: #f8f4f7;
+  background-color: #fff;
   color: #333;
 }
 
@@ -73,13 +73,13 @@ header {
   flex: 1;
   background-color: transparent;
   border: 1px solid #525356;
-  color: #f8f7f4;
+  color: #fff;
 }
 
 #add-note-container button {
   cursor: pointer;
   background-color: #333;
-  color: #f8f7f4;
+  color: #fff;
 }
 
 /* Notas */
@@ -88,7 +88,6 @@ header {
   grid-template-columns: repeat(auto-fill, 250px);
   padding: 2rem;
   gap: 2rem;
-
 }
 
 #note {
@@ -104,7 +103,7 @@ header {
 #note textarea {
   background-color: transparent;
   resize: none;
-  color: #f8f7f4;
+  color: #fff;
   border: none;
   height: 100%;
   outline: none;
@@ -138,12 +137,12 @@ header {
   transition: 0.3s;
 }
 
-.note .bi-file-earmark-plus {
+#note .bi-file-earmark-plus {
   top: 40px;
 }
 
-.note .bi-x-lg:hover,
-.note .bi-file-earmark-plus:hover {
+#note .bi-x-lg:hover,
+#note .bi-file-earmark-plus:hover {
   color: #fff;
 }
 
