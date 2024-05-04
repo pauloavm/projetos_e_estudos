@@ -90,7 +90,7 @@ header {
   gap: 2rem;
 }
 
-#note {
+.note {
   min-height: 200px;
   padding: 1rem;
   border: 1px solid #ccc;
@@ -100,7 +100,7 @@ header {
   position: relative;
 }
 
-#note textarea {
+.note textarea {
   background-color: transparent;
   resize: none;
   color: #fff;
@@ -109,7 +109,7 @@ header {
   outline: none;
 }
 
-#note .bi-pin {
+.note .bi-pin {
   position: absolute;
   left: 10px;
   bottom: 10px;
@@ -120,7 +120,7 @@ header {
   border-radius: 3px;
 }
 
-#note:hover > i {
+.note:hover > i {
   opacity: 1;
 }
 
@@ -137,12 +137,12 @@ header {
   transition: 0.3s;
 }
 
-#note .bi-file-earmark-plus {
+.note .bi-file-earmark-plus {
   top: 40px;
 }
 
-#note .bi-x-lg:hover,
-#note .bi-file-earmark-plus:hover {
+.note .bi-x-lg:hover,
+.note .bi-file-earmark-plus:hover {
   color: #fff;
 }
 
