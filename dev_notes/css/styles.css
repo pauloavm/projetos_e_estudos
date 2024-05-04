@@ -51,6 +51,33 @@ header {
 }
 
 #export-notes:hover {
-  background-color: #fff;
+  background-color: #f8f4f7;
   color: #333;
+}
+
+/* Form de nova nota */
+#add-note-container {
+  display: flex;
+  width: 400px;
+  margin: 1rem auto 0;
+  gap: 1rem;
+}
+
+#add-note-container input,
+#add-note-container button {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#add-note-container input {
+  flex: 1;
+  background-color: transparent;
+  border: 1px solid #525356;
+  color: #f8f7f4;
+}
+
+#add-note-container button {
+  cursor: pointer;
+  background-color: #333;
+  color: #f8f7f4;
 }
