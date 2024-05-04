@@ -150,3 +150,62 @@ const boxShadow = new BoxShadowGenerator(
 );
 
 boxShadow.initialize();
+// Eventos
+horizontal.addEventListener("input", (e) => {
+  const value = e.target.value;
+
+  boxShadow.updateValue("horizontal", value);
+});
+
+vertical.addEventListener("input", (e) => {
+  const value = e.target.value;
+
+  boxShadow.updateValue("vertical", value);
+});
+
+blur.addEventListener("input", (e) => {
+  const value = e.target.value;
+
+  boxShadow.updateValue("blur", value);
+});
+
+spread.addEventListener("input", (e) => {
+  const value = e.target.value;
+
+  boxShadow.updateValue("spread", value);
+});
+
+color.addEventListener("input", (e) => {
+  const value = e.target.value;
+
+  boxShadow.updateValue("color", value);
+});
+
+opacity.addEventListener("input", (e) => {
+  const value = e.target.value;
+
+  boxShadow.updateValue("opacity", value);
+});
+
+inset.addEventListener("input", (e) => {
+  const value = e.target.checked;
+
+  boxShadow.updateValue("inset", value);
+});
+
+// Copiar regra
+const rulesArea = document.querySelector("#rules-area");
+const copyInstructions = document.querySelector("#copy-instructions");
+
+rulesArea.addEventListener("click", () => {
+  const rules = rulesArea.innerText.replace(/^\s*\n/gm, "");
+
+  navigator.clipboard.writeText(rules).then(() => {
+    copyInstructions.innerText = "Regra copiada com sucesso!";
+
+    setTimeout(() => {
+      copyInstructions.innerText =
+        "Clique no quadro acima para copiar as regras";
+    }, 1000);
+  });
+});
