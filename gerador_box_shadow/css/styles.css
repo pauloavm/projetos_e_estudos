@@ -1,12 +1,10 @@
 * {
-  font-family: Verdana;
+  font-family: "Verdana";
   margin: 0;
   padding: 0;
 }
 
-body {
-  padding-bottom: 100px;
-}
+body
 h2 {
   margin-bottom: 1.6rem;
   text-align: center;
@@ -25,7 +23,7 @@ h2 {
   padding: 2rem;
 }
 
-/* Controles */
+/* Controls */
 .form-control {
   display: flex;
   padding-bottom: 1.2rem;
@@ -38,6 +36,7 @@ h2 {
   margin-bottom: 1rem;
   color: #555;
 }
+
 .range-input {
   display: flex;
   flex-direction: column;
@@ -46,7 +45,6 @@ h2 {
 
 .range-input input[type="range"] {
   -webkit-appearance: none;
-  appearance: none;
   width: 100%;
   height: 24px;
   background: #d3d3d3;
@@ -58,45 +56,92 @@ h2 {
   appearance: none;
   width: 25px;
   height: 25px;
-  background-color: #e9d60a;
+  background: #e9d60a;
   cursor: pointer;
 }
-.refence-input {
+
+.reference-input {
   display: flex;
   align-items: center;
 }
 
-.refence-input p {
+.reference-input p {
   margin-left: 4px;
 }
 
 .form-control input[type="text"] {
   height: 30px;
-  width: 30px;
+  width: 40px;
   margin-left: 1rem;
   text-align: center;
 }
 
-/* preview */
+/* Comu */
+#color-value {
+  min-width: 100px;
+}
 
+#inset {
+  align-self: start;
+  height: 20px;
+  width: 20px;
+}
+
+/* Preview */
 #box {
   width: 100%;
-  height: 100%;
+  height: 300px;
   background-color: #e9d60a;
 }
 
-/* area de geração */
+/* Área de geração */
 #generated-rule {
   text-align: center;
+  margin-bottom: 2rem;
+  padding: 0 2rem;
 }
 
 #generated-rule p {
   margin-bottom: 0.5rem;
 }
+
 #rules-area {
   background-color: #d3d3d3;
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
   border: 2px solid #e9d60a;
   padding: 1rem;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+#rules-area:hover {
+  background-color: #dfdfdf;
+}
+
+#copy-instructions {
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* Responsivo */
+@media (max-width: 425px) {
+  #controls-container,
+  #preview {
+    padding: 1rem 2rem;
+  }
+
+  #box-shadow-generator {
+    flex-direction: column;
+  }
+
+  #box {
+    width: 60%;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  #generated-rule {
+    margin-top: 1.5rem;
+  }
 }
