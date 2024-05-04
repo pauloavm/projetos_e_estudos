@@ -37,6 +37,7 @@ class BoxShadowGenerator {
     this.webkitRule = webkitRule;
     this.mozRule = mozRule;
   }
+
   initialize() {
     this.horizontalRef.value = this.horizontal.value;
     this.verticalRef.value = this.vertical.value;
@@ -150,6 +151,7 @@ const boxShadow = new BoxShadowGenerator(
 );
 
 boxShadow.initialize();
+
 // Eventos
 horizontal.addEventListener("input", (e) => {
   const value = e.target.value;
