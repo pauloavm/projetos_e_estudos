@@ -46,3 +46,27 @@ header nav {
 #bottom-header h3 {
   font-size: 1.2rem;
 }
+
+#bottom-header a {
+  color: #333;
+}
+
+#bottom-header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#bottom-header-inner a {
+  margin: 0 0.5rem;
+}
+
+#bottom-header-inner .btn,
+.btn {
+  background: #0071e3;
+  border-radius: 10rem;
+  padding: 0.4rem 1rem;
+  color: #fff;
+}
