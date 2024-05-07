@@ -1,6 +1,21 @@
+/* Geral */
 * {
   margin: 0;
   padding: 0;
-  background-color: rgb(175, 175, 175);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana;
 }
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Navbar */
+header nav {
+  background-color: #333;
+}
+
+
