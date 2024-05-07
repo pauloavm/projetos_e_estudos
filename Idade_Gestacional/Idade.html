@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Idade Gestacional</title>
     <style>
       body {
         margin: 0;
@@ -15,6 +16,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: 2rem;
       }
 
       form {
@@ -61,8 +63,28 @@
       }
 
       .footer {
-        margin-top: 1rem;
-        text-align: center;
+        margin: 0 auto;
+        width: 100%;
+        text-decoration: none;
+        color: #000;
+      }
+
+      #donate {
+        width: 70px;
+        height: 30px;
+      }
+
+      p.cafezinho a,
+      p {
+        text-decoration: none;
+        color: #000;
+        font-size: small;
+      }
+
+      @media (max-width: 768px) {
+        .footer {
+          text-align: center;
+        }
       }
 
       .pagamentos {
@@ -76,11 +98,12 @@
   <body>
     <div class="container">
       <h1>Calculadora de Idade Gestacional</h1>
-      <form id="form">
+      <form id="form" onsubmit="event.preventDefault(); calculateAge()">
         <label for="data-nascimento">Data de Nascimento (dd/mm/aaaa):</label>
         <input
           type="date"
           id="data-nascimento"
+          name="data-nascimento"
           placeholder="Ex: 01/01/2023"
           required
         />
@@ -88,23 +111,9 @@
         <input
           type="number"
           id="semanas-nascimento"
+          name="semanas-nascimento"
           min="0"
           placeholder="Ex: 36"
-          required
-        />
-        <label for="dias-nascimento">Dias de Nascimento:</label>
-        <input
-          type="number"
-          id="dias-nascimento"
-          min="0"
-          max="6"
-          placeholder="Ex: 3"
-        />
-        <label for="data-atual">Data Atual (dd/mm/aaaa):</label>
-        <input
-          type="date"
-          id="data-atual"
-          placeholder="Ex: 01/05/2024"
           required
         />
         <div class="buttons-container">
@@ -113,7 +122,8 @@
         </div>
       </form>
       <div class="result" id="resultado"></div>
-      <footer>
+    </div>
+    <footer>
       <div class="footer">
         <div class="pagamentos">
           <form
@@ -155,85 +165,46 @@
             </a>
           </p>
         </div>
-      </footer>
-
       </div>
-    </div>
+    </footer>
+
     <script>
-      const form = document.getElementById("form");
-      const resultado = document.getElementById("resultado");
-
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const dataNascimento = document.getElementById("data-nascimento").value;
-        const semanasNascimento = parseInt(
+      function calculateAge() {
+        var birthdateStr = document.getElementById("data-nascimento").value;
+        var gestationalAge = parseInt(
           document.getElementById("semanas-nascimento").value
         );
-        const diasNascimento = parseInt(
-          document.getElementById("dias-nascimento").value
-        );
-        const dataAtual = document.getElementById("data-atual").value;
 
-        const nascimentoDate = new Date(dataNascimento);
-        const atualDate = new Date(dataAtual);
-
-        const idadeCronologica = calcularIdadeCronologica(
-          nascimentoDate,
-          atualDate
-        );
-        const idadeGestacional = calcularIdadeGestacional(
-          semanasNascimento,
-          diasNascimento,
-          nascimentoDate,
-          atualDate
+        var birthdateArr = birthdateStr.split("-");
+        var birthdate = new Date(
+          birthdateArr[0],
+          birthdateArr[1] - 1,
+          birthdateArr[2]
         );
 
-        const idadeCorrigida = calcularIdadeCorrigida(
-          idadeCronologica,
-          semanasNascimento
+        var now = new Date();
+        var millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000;
+        var chronologicalAgeWeeks = Math.floor(
+          (now - birthdate) / millisecondsPerWeek
         );
+        var chronologicalAgeMonths = Math.floor(chronologicalAgeWeeks / 4);
 
-        const resultadoHTML = `
-    <p>Idade Cronológica: ${formatIdade(idadeCronologica)} dias</p>
-    <p>Idade Corrigida: ${formatIdade(idadeCorrigida)}</p>
-  `;
+        var correctedAgeWeeks = chronologicalAgeWeeks - (40 - gestationalAge);
+        var correctedAgeMonths = Math.floor(correctedAgeWeeks / 4);
 
-        resultado.innerHTML = resultadoHTML;
-      });
+        var result =
+          "Idade Cronológica: " +
+          chronologicalAgeWeeks +
+          " semanas (" +
+          chronologicalAgeMonths +
+          " meses)<br>" +
+          "Idade Corrigida: " +
+          correctedAgeWeeks +
+          " semanas (" +
+          correctedAgeMonths +
+          " meses)";
 
-      function limparFormulario() {
-        document.getElementById("form").reset();
-        resultado.innerHTML = ""; // Limpa o resultado
-      }
-
-      function calcularIdadeCronologica(nascimentoDate, atualDate) {
-        return Math.floor((atualDate - nascimentoDate) / (1000 * 60 * 60 * 24));
-      }
-
-      function calcularIdadeGestacional(
-        semanas,
-        dias,
-        nascimentoDate,
-        atualDate
-      ) {
-        const gestationalAge = semanas + dias / 7;
-        return atualDate - nascimentoDate >=
-          gestationalAge * 7 * 24 * 60 * 60 * 1000
-          ? gestationalAge
-          : gestationalAge;
-      }
-
-      function calcularIdadeCorrigida(idadeCronologica, semanasNascimento) {
-        // Desconta as semanas de prematuridade da idade cronológica
-        const semanasPrematuridade = 40 - semanasNascimento;
-        return idadeCronologica - semanasPrematuridade;
-      }
-
-      function formatIdade(idade) {
-        const meses = Math.floor(idade / 30);
-        const dias = idade % 30;
-        return `${meses} meses e ${dias} dias`;
+        document.getElementById("resultado").innerHTML = result;
       }
     </script>
   </body>
