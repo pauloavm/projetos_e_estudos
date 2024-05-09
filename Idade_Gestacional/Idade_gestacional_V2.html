@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="pt_BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Idade do Bebê</title>
     <style>
       /* Estilos CSS para a aparência da calculadora */
@@ -15,15 +17,15 @@
 
       body {
         text-align: center;
-        background-color: #f8f7f4;
+        background-color: #fff;
         padding: 20px;
       }
       #data-container {
-        width: 480px;
-        padding: 20px;
-        background-color: white;
+        width: 80%;
+        padding: 150px;
+        background-color: #f8f7f4;
         border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -31,7 +33,7 @@
         margin: .5rem auto .5rem ;
       }
       h1 {
-        font-size: 25px;
+        font-size: 50px;
         color: #333;
       }
 
@@ -40,48 +42,72 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-       
-        margin-top: .5rem;
-      }
-      .input-field input {
-        width: 200px;
-        height: 30px;
-        text-align: center;
+        font-size: 40px;
         margin: .5rem;
       }
-
-      .button {
-        background-color: #0000ff;
-        color: #f8f7f4;
-        border: none;
-        padding: 10px 20px;
+      .input-field input {
+        width: 400px;
+        height: 80px;
         text-align: center;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 4px;
-        opacity: 0.7;
+        margin: 1rem;
+        font-size: larger;
+        border-radius: 3px;
       }
+
+      .button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem  1rem 1rem ;
+}
+
+.button {
+  /* remove the display: flex; and flex-direction: row; properties from here */
+  font-size: x-large;
+  width: 150px;
+  height: 75px;
+  background-color: #0000ff;
+  color: #f8f7f4;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 15px;
+  opacity: 0.7;
+}
       .button:hover {
         opacity: 1;
       }
 
       #result {
         margin-top: 20px;
-        font-size: 15px;
+        font-size: 30px;
         font-weight: bold;
         margin-bottom: 1rem;
       }
       .cafezinho {
-        font-size: small;
+        font-size: x-large;
         color: black;
       }
       footer {
         margin-top: 1rem;
       }
+      .footer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        width: 90%;
+      }
+      .footer input{
+        width: 300px;
+                      height: 150px;
+      }
       .footer span{
-        font-size: small;
+        font-size: x-large;
       }
     </style>
   </head>
@@ -103,7 +129,10 @@
         <input type="number" id="daysGestationalAge" min="0" max="6" />
       </div>
       
-      <button class="button" onclick="calculateAge()">Calcular</button>
+      <div class="button-container">
+        <button class="button" onclick="calculateAge()">Calcular</button>
+      <button class="button" onclick="location.reload()">Limpar</button>
+    </div>
       <!-- <div class="input-field">
         <label for="birthdate">Data de Nascimento:</label>
         <input type="date" id="birthdate" />
@@ -290,3 +319,6 @@ function displayResults(chronologicalAge, correctedAge) {
     </script>
   </body>
 </html>
+
+
+
