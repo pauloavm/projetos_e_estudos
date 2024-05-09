@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora de Idade Gestacional</title>
+<html lang="pt_BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Idade do Bebê</title>
     <style>
       /* Estilos CSS para a aparência da calculadora */
       * {
@@ -18,23 +17,24 @@
 
       body {
         text-align: center;
-        background-color: #f8f7f4;
+        background-color: #fff;
         padding: 20px;
       }
       #data-container {
         width: 80%;
+        max-width: 600px; /* Define uma largura máxima para garantir uma boa aparência em dispositivos maiores */
         padding: 20px;
-        background-color: white;
+        background-color: #f8f7f4;
         border-radius: 10px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.753);
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin: 0 auto;
+        margin: .5rem auto .5rem ;
       }
       h1 {
-        font-size: 25px;
+        font-size: 2rem; /* Altera o tamanho da fonte para uma unidade de medida mais responsiva */
         color: #333;
       }
 
@@ -43,70 +43,105 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-bottom: 10px;
+        font-size: 1.2rem; /* Altera o tamanho da fonte para uma unidade de medida mais responsiva */
+        margin: .5rem;
       }
       .input-field input {
-        font-size: medium;
-        width: 100%;
-        height: 40px;
+        width: 100%; /* Altera a largura para ocupar toda a largura do contêiner pai */
+        max-width: 400px; /* Define uma largura máxima para garantir uma boa aparência em dispositivos maiores */
+        height: 50px; /* Reduz a altura do input para uma unidade de medida mais responsiva */
         text-align: center;
-        margin: .5rem auto;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-
+        margin: 1rem;
+        font-size: 1rem; /* Altera o tamanho da fonte para uma unidade de medida mais responsiva */
+        border-radius: 3px;
       }
 
-      .button {
-        background-color: #0000ff;
-        color: #f8f7f4;
-        border: none;
-        padding: 10px 20px;
-        text-align: center;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 4px;
-        opacity: 0.7;
-      }
+      .button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Distribui o espaço entre os botões verticalmente */
+  margin: 1rem; /* Adiciona margem ao redor do container */
+}
+
+.button {
+  font-size: 1rem;
+  width: 100%;
+  height: 50px;
+  background-color: #0000ff;
+  color: #f8f7f4;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  margin: 1rem; 
+  border-radius: 15px;
+  opacity: 0.7;
+}
+
+
       .button:hover {
         opacity: 1;
       }
 
       #result {
         margin-top: 20px;
-        font-size: 15px;
+        font-size: 1.5rem; /* Altera o tamanho da fonte para uma unidade de medida mais responsiva */
         font-weight: bold;
         margin-bottom: 1rem;
+       
       }
+
       .cafezinho {
-        font-size: small;
+        font-size: 1rem; /* Altera o tamanho da fonte para uma unidade de medida mais responsiva */
         color: black;
       }
+
       footer {
         margin-top: 1rem;
       }
-      .footer span{
-        font-size: small;
+
+      .footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        width: 90%;
+      }
+
+      .footer input {
+        width: 100%; /* Faz com que o input ocupe toda a largura disponível */
+        max-width: 150px; /* Define uma largura máxima para garantir uma boa aparência em dispositivos maiores */
+        height: 75px;
+      }
+
+      .footer span {
+        font-size: 1.2rem; /* Altera o tamanho da fonte para uma unidade de medida mais responsiva */
       }
     </style>
   </head>
   <body>
     <div id="data-container">
       <h1>Calculadora de Idade do Bebê</h1>
-
       <div class="input-field">
         <label for="birthdate">Data de Nascimento:</label>
         <input type="date" id="birthdate" />
       </div>
-
+      
       <div class="input-field">
         <label for="gestationalAge">Idade Gestacional (semanas):</label>
         <input type="number" id="gestationalAge" />
       </div>
-
-      <button class="button" onclick="calculateAge()">Calcular</button>
+      
+      <div class="input-field">
+        <label for="daysGestationalAge">Dias na Semana de Nascimento:</label>
+        <input type="number" id="daysGestationalAge" min="0" max="6" />
+      </div>
+      
+      <div class="button-container">
+        <button class="button" onclick="calculateAge()">Calcular</button>
+        <button class="button" onclick="location.reload()">Limpar</button>
+      </div>
 
       <div id="result"></div>
     </div>
@@ -159,52 +194,76 @@
     </footer>
     <script>
       function calculateAge() {
-        var birthdate = new Date(document.getElementById("birthdate").value);
-        var gestationalAge = parseInt(
-          document.getElementById("gestationalAge").value
-        );
+  const birthdate = new Date(document.getElementById("birthdate").value);
+  const gestationalAge = parseInt(document.getElementById("gestationalAge").value);
+  const daysGestationalAge = parseInt(document.getElementById("daysGestationalAge").value);
 
-        var chronologicalAge = calculateChronologicalAge(birthdate);
-        var correctedAge = calculateCorrectedAge(
-          chronologicalAge,
-          gestationalAge
-        );
+  const chronologicalAge = calculateChronologicalAge(birthdate);
+  const correctedAge = calculateCorrectedAge(chronologicalAge, gestationalAge, daysGestationalAge);
 
-        displayResults(chronologicalAge, correctedAge);
-      }
+  displayResults(chronologicalAge, correctedAge);
+}
 
-      function calculateChronologicalAge(birthdate) {
-        var now = new Date();
+function calculateChronologicalAge(birthdate) {
+  const now = new Date();
 
-        var millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000;
-        var ageInWeeks = Math.floor((now - birthdate) / millisecondsPerWeek);
+  const millisecondsPerWeek = 7 * 24 * 60 * 60 * 1000;
+  const ageInWeeks = Math.floor((now - birthdate) / millisecondsPerWeek);
 
-        var ageInMonths = Math.floor(ageInWeeks / 4);
+  const ageInMonths = Math.floor(ageInWeeks / 4);
 
-        return { weeks: ageInWeeks, months: ageInMonths };
-      }
+  return { weeks: ageInWeeks, months: ageInMonths };
+}
 
-      function calculateCorrectedAge(chronologicalAge, gestationalAge) {
-        var correctedWeeks = chronologicalAge.weeks - (40 - gestationalAge);
-        var correctedMonths = Math.floor(correctedWeeks / 4);
+// calculo da idade
+function calculateCorrectedAge(chronologicalAge, gestationalAge, daysGestationalAge) {
+  // const correctedWeeks = chronologicalAge.weeks - (40 - gestationalAge) + daysGestationalAge;
+  const correctedWeeks = chronologicalAge.weeks - (40 - gestationalAge) + daysGestationalAge;
 
-        return { weeks: correctedWeeks, months: correctedMonths };
-      }
+  const correctedMonths = Math.floor(correctedWeeks / 4);
+  const correctedDays = correctedWeeks % 4;
 
-      function displayResults(chronologicalAge, correctedAge) {
-        var resultElement = document.getElementById("result");
-        resultElement.innerHTML =
-          "Idade Cronológica: " +
-          chronologicalAge.weeks +
-          " semanas (" +
-          chronologicalAge.months +
-          " meses)<br>" +
-          "Idade Corrigida: " +
-          correctedAge.weeks +
-          " semanas (" +
-          correctedAge.months +
-          " meses)";
-      }
+  return { weeks: correctedWeeks, months: correctedMonths, days: correctedDays };
+}
+// function calculateCorrectedAge(chronologicalAge, gestationalAge, daysGestationalAge) {
+//   const correctedWeeks = chronologicalAge.weeks - (40 - gestationalAge) + daysGestationalAge;
+//   const correctedMonths = Math.floor(correctedWeeks / 4);
+
+//   return { weeks: correctedWeeks, months: correctedMonths };
+// }
+// exibição do resultado
+function displayResults(chronologicalAge, correctedAge) {
+  const resultElement = document.getElementById("result");
+  resultElement.innerHTML =
+    "Idade Cronológica: " +
+    chronologicalAge.weeks +
+    " semanas (" +
+    chronologicalAge.months +
+    " meses)<br>" +
+    "Idade Corrigida: " +
+    correctedAge.weeks +
+    " semanas (" +
+    correctedAge.months +
+    " meses) e " +
+    correctedAge.days +
+    " dias";
+}
+
+
+// function displayResults(chronologicalAge, correctedAge) {
+//   const resultElement = document.getElementById("result");
+//   resultElement.innerHTML =
+//     "Idade Cronológica: " +
+//     chronologicalAge.weeks +
+//     " semanas (" +
+//     chronologicalAge.months +
+//     " meses)<br>" +
+//     "Idade Corrigida: " +
+//     correctedAge.weeks +
+//     " semanas  e " +
+//     correctedAge.months +
+//     " dias";
+// }
     </script>
   </body>
 </html>
