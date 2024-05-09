@@ -1,6 +1,8 @@
 import React from "react";
-import Quiz from "../img/quiz.svg";
 
+import "./welcome.css";
+
+import Quiz from "../img/quiz.svg";
 
 const welcome = () => {
   return (
