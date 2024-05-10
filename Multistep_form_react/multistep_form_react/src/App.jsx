@@ -1,6 +1,7 @@
 // Components
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
-import UseForm from "./components/UserForm";
+import { FiSend } from "react-icons/fi";
+import UserForm from "./components/UserForm";
 import ReviewForm from "./components/ReviewForm";
 import Thanks from "./components/Thanks";
 
@@ -11,12 +12,13 @@ import "./App.css";
 
 function App() {
   const formComponents = [
-    <UseForm key="first" />,
+    <UserForm key="first" />,
     <ReviewForm key="second" />,
     <Thanks key="third" />,
   ];
 
-  const { currentStep, currentComponent, changeStep } = useForm(formComponents);
+  const { currentStep, currentComponent, changeStep, isLastStep, isfirstStep } =
+    useForm(formComponents);
 
   return (
     <>
@@ -32,17 +34,25 @@ function App() {
             <form onSubmit={(e) => changeStep(currentStep + 1, e)}>
               <div className="inputs_container">{currentComponent} </div>
               <div className="actions">
-                <button
-                  type="button"
-                  onClick={() => changeStep(currentStep - 1)}
-                >
-                  <GrFormPrevious /> <span>Voltar</span>
-                </button>
-                <button type="submit">
-                  {/* {" "} */}
-                  <span>Avançar</span>
-                  <GrFormNext />
-                </button>
+                {!isfirstStep && (
+                  <button
+                    type="button"
+                    onClick={() => changeStep(currentStep - 1)}
+                  >
+                    <GrFormPrevious /> <span>Voltar</span>
+                  </button>
+                )}
+                {!isLastStep ? (
+                  <button type="submit">
+                    <span>Avançar</span>
+                    <GrFormNext />
+                  </button>
+                ) : (
+                  <button type="button">
+                    <span>Enviar</span>
+                    <FiSend />
+                  </button>
+                )}
               </div>
             </form>
           </div>

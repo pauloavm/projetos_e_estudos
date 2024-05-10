@@ -4,7 +4,7 @@ export function useForm(steps) {
   const [currentStep, setCurrentStep] = useState(0);
 
   function changeStep(i, e) {
-    e.preventDefaulf();
+    if (e) e.preventDefaulf();
 
     if (i < 0 || i >= steps.length) return;
 
@@ -15,5 +15,7 @@ export function useForm(steps) {
     currentStep,
     currentComponent: steps[currentStep],
     changeStep,
+    isLastStep: currentStep + 1 === steps.length ? true : false,
+    isFirstStep: currentStep === 0 ? true : false,
   };
 }
