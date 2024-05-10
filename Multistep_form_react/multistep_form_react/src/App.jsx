@@ -15,7 +15,8 @@ function App() {
           </p>
           <div className="form-container">
             <p>etapas</p>
-            <form action="">
+            <form>
+              <div className="inputs_container"></div>
               <div className="actions">
                 <button type="button">
                   <GrFormPrevious /> <span>Voltar</span>
