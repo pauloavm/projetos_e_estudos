@@ -1,9 +1,14 @@
-// import React from "react";
+import React from "react";
 
 const ReviewForm = () => {
   return (
-    <div>
-      <h2>Review Form</h2>
+    <div className="review-form">
+      <div className="form-control score-container">
+        <label htmlFor="" className="radio-container">
+          <input type="radio" value="unsatisfied" name="review" required />
+          <p></p>
+        </label>
+      </div>
     </div>
   );
 };
