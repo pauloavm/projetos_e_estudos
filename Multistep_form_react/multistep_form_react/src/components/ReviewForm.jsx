@@ -37,7 +37,7 @@ const ReviewForm = () => {
         <textarea
           name="comment"
           id="comment"
-          placeholder="Conte como foi sua experiência com o produto"
+          placeholder="Conte como foi sua experiência com o produto..."
           required
         ></textarea>
       </div>
