@@ -23,12 +23,14 @@ const Thanks = ({ data }) => {
         desconto para sua proxima compra.
       </p>
       <p>Para concluir sua anavliação clique em enviar.</p>
-      <h3>Aqui está um resumo de sua avaliação:</h3>
+      <h3>Aqui está um resumo de sua avaliação: {data.name} </h3>
       <p className="review-data">
         <span>Satisfação com o produto:</span>
+        {emojiData[data.review]}
       </p>
       <p className="review-data">
         <span>Comentário:</span>
+        {data.comment}
       </p>
     </div>
   );
