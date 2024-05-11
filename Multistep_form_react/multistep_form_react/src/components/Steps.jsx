@@ -3,7 +3,7 @@ import { FiSend } from "react-icons/fi";
 
 import "./Steps.css";
 
-const Steps = ({currentStep}) => {
+const Steps = ({ currentStep }) => {
   return (
     <div className="steps">
       <div className="step active">
