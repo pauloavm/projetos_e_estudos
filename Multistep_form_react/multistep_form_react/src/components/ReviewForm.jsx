@@ -11,77 +11,61 @@ const ReviewForm = ({ data, updateFieldHandler }) => {
   return (
     <div className="review-form">
       <div className="form-control score-container">
-        <label htmlFor="" className="radio-container">
+        <label className="radio-container">
           <input
             type="radio"
             value="unsatisfied"
             name="review"
-            required
             checked={data.review === "unsatisfied"}
-            onChange={(e) => {
-              updadateFieldHandler("review", e.target.value);
-            }}
+            required
+            onChange={(e) => updateFieldHandler("review", e.target.value)}
           />
-          <BsFillEmojiFrownFill className="emoji" />
+          <BsFillEmojiFrownFill />
           <p>Insatisfeito</p>
         </label>
-        <label htmlFor="" className="radio-container">
+        <label className="radio-container">
           <input
             type="radio"
             value="neutral"
             name="review"
-            required
             checked={data.review === "neutral"}
-            onChange={(e) => {
-              updadateFieldHandler("review", e.target.value);
-            }}
-          />{" "}
+            onChange={(e) => updateFieldHandler("review", e.target.value)}
           />
-          <BsFillEmojiNeutralFill className="emoji" />
+          <BsFillEmojiNeutralFill />
           <p>Poderia ser melhor</p>
         </label>
-        <label htmlFor="" className="radio-container">
+        <label className="radio-container">
           <input
             type="radio"
             value="satisfied"
             name="review"
-            required
             checked={data.review === "satisfied"}
-            onChange={(e) => {
-              updadateFieldHandler("review", e.target.value);
-            }}
+            onChange={(e) => updateFieldHandler("review", e.target.value)}
           />
-          />
-          <BsFillEmojiSmileFill className="emoji" />
+          <BsFillEmojiSmileFill />
           <p>Satisfeito</p>
         </label>
-        <label htmlFor="" className="radio-container">
+        <label className="radio-container">
           <input
             type="radio"
-            value="very-satisfied"
+            value="very_satisfied"
             name="review"
-            required
-            checked={data.review === "very-satisfied"}
-            onChange={(e) => {
-              updadateFieldHandler("review", e.target.value);
-            }}
+            checked={data.review === "very_satisfied"}
+            onChange={(e) => updateFieldHandler("review", e.target.value)}
           />
-
-          <BsFillEmojiHeartEyesFill className="emoji" />
-          <p>Muito Satisfeito</p>
+          <BsFillEmojiHeartEyesFill />
+          <p>Muito satisfeito</p>
         </label>
       </div>
       <div className="form-control">
         <label htmlFor="comment">Comentário:</label>
         <textarea
-          name="comment"
+          name="cooment"
           id="comment"
-          placeholder="Conte como foi sua experiência com o produto..."
-          required
+          placeholder="Conte como foi a sua experiência com o produto..."
           value={data.comment || ""}
-          onChange={(e) => {
-            updadateFieldHandler("comment", e.target.value);
-          }}
+          required
+          onChange={(e) => updateFieldHandler("comment", e.target.value)}
         ></textarea>
       </div>
     </div>
