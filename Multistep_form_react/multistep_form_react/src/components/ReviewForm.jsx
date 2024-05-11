@@ -66,7 +66,7 @@ const ReviewForm = ({ data, updateFieldHandler }) => {
               updadateFieldHandler("review", e.target.value);
             }}
           />
-          />
+
           <BsFillEmojiHeartEyesFill className="emoji" />
           <p>Muito Satisfeito</p>
         </label>

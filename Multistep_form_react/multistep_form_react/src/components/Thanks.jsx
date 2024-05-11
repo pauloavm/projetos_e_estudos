@@ -1,5 +1,3 @@
-import "./Thanks.css";
-
 import {
   BsFillEmojiHeartEyesFill,
   BsFillEmojiSmileFill,
@@ -7,7 +5,16 @@ import {
   BsFillEmojiFrownFill,
 } from "react-icons/bs";
 
-const Thanks = ({data}) => {
+import "./Thanks.css";
+
+const emojiData = {
+  unsatisfied: <BsFillEmojiFrownFill />,
+  neutral: <BsFillEmojiNeutralFill />,
+  satisfied: <BsFillEmojiSmileFill />,
+  very_satisfied: <BsFillEmojiHeartEyesFill />,
+};
+
+const Thanks = ({ data }) => {
   return (
     <div className="thnaks-container">
       <h2>Falta pouco...</h2>
