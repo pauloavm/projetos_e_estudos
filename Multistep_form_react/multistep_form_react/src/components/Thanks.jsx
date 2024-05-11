@@ -7,7 +7,7 @@ import {
   BsFillEmojiFrownFill,
 } from "react-icons/bs";
 
-const Thanks = () => {
+const Thanks = ({data}) => {
   return (
     <div className="thnaks-container">
       <h2>Falta pouco...</h2>
