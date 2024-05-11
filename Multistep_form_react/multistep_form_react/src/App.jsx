@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 // Components
 import UserForm from "./components/UserForm";
 import ReviewForm from "./components/ReviewForm";
