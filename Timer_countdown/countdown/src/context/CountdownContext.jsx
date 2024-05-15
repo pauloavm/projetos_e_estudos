@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Children } from "react";
+import { children } from "react";
 
 const CountdownContext = React.createContext(null);
 
