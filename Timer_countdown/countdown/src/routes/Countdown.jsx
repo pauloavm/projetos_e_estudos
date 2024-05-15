@@ -12,9 +12,10 @@ const Countdown = () => {
 
   if (!event) return <Navigate to="/" />;
 
-  const eventTitle = event.title
+  const eventTitle = event.title;
+  const eventColor = event.color;
 
-  const [day, hour, minute, second] = useCountdown("Jan 1, 2025 00:00:00");
+  const [day, hour, minute, second] = useCountdown(event.date);
   return (
     <>
       <Title title={eventTitle} />
