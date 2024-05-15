@@ -8,8 +8,18 @@ const Home = () => {
   const [image, setImage] = useState();
   const [color, setColor] = useState();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  
+    const eventObject = {
+      title,
+      date,
+      image,
+      color,
+    };
+
+    console.log(eventObject);
+  };
 
   return (
     <div className="home">
