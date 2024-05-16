@@ -1,9 +1,15 @@
-import React from 'react'
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import BackBtn from "../components/BackBtn";
+
+import classes from "./Repos.module.css";
 
 const Repos = () => {
-  return (
-    <div>Repos</div>
-  )
-}
+  const { username } = useParams();
+  return <div>
+    <BackBtn />
+    {username} </div>;
+};
 
-export default Repos
+export default Repos;
