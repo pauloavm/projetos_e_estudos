@@ -1,0 +1,415 @@
+@charset "UTF-8";
+
+/* Propriedades que se aplicam a todos os elementos da página. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fffffffb;
+  padding: 1rem;
+}
+
+.logoEu {
+  width: 100px;
+  height: 100px;
+}
+
+.Title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  text-align: center;
+}
+
+#openMenu,
+#closeMenu {
+  border: none;
+  background: none;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0px 5px;
+  cursor: pointer;
+  display: none;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+nav a {
+  margin: 3%;
+  font-size: 15pt;
+  color: #000;
+}
+
+main {
+  padding: 1rem;
+  text-align: center;
+}
+
+#title-main {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.imc,
+.fetal {
+  width: 45%;
+}
+
+/* Estilo para o componente IMC */
+.imc * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, sans-serif; /* Alterado para Verdana */
+}
+
+.imc #title {
+  color: #000; /* Cor do título alterada para preto */
+}
+
+.imc .container {
+  width: 80%; /* Ajustado para 80% da largura */
+  max-width: 600px; /* Limitado a 600px de largura máxima */
+  padding: 20px;
+  background-color: #f8f7f4;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.753);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0.5rem auto;
+}
+
+.imc #calc-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #000; /* Cor do título alterada para preto */
+}
+
+.imc .form-control label {
+  font-weight: bold;
+  margin-bottom: 0.6rem;
+  color: #000; /* Cor do label alterada para preto */
+}
+
+.imc .form-control input {
+  width: 100%;
+  max-width: 400px;
+  height: 50px;
+  text-align: center;
+  margin: 0.5rem;
+  font-size: 1rem;
+  border-radius: 3px;
+  border: 1px solid #ccc; /* Adicionado uma borda para inputs */
+}
+
+.imc .action-control {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.imc button {
+  text-transform: uppercase;
+  font-size: 1rem;
+  width: 100%;
+  height: 50px;
+  background-color: #0000ff;
+  color: #f8f7f4;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  margin: 0.5rem;
+  border-radius: 15px;
+  opacity: 0.7;
+}
+
+.imc button:hover {
+  opacity: 1;
+}
+
+.imc #clear-btn {
+  background-color: #0000ff;
+}
+
+.imc #result-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.imc #imc-number {
+  font-size: 2.4rem;
+  margin-bottom: 0.6rem;
+  color: #000; /* Cor do número do IMC alterada para preto */
+}
+
+.imc #imc-info {
+  font-size: 1.4rem;
+  color: #000; /* Cor do texto de informação alterada para preto */
+}
+
+.imc #result-container h3 {
+  margin-top: 1rem;
+  color: #000; /* Cor do título h3 alterada para preto */
+}
+
+#imc-table {
+  display: none; /* Oculta a tabela inicialmente */
+}
+
+.imc #imc-table {
+  margin: 1.5rem 0;
+  font-size: 0.8rem;
+}
+
+.imc .table-header {
+  font-weight: bold;
+  color: #000; /* Cor do cabeçalho da tabela alterada para preto */
+}
+
+.imc .table-header,
+.imc .table-data {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc; /* Adicionada uma borda para separar linhas */
+  color: #000; /* Cor do texto da tabela alterada para preto */
+}
+
+.imc .table-header h4,
+.imc .table-data p {
+  flex: 1;
+}
+
+.imc .table-header h4:nth-child(3),
+.imc .table-data p:nth-child(3) {
+  max-width: 80px;
+}
+
+.imc #back-btn {
+  align-self: center;
+}
+
+.imc .low {
+  color: #dbce12;
+}
+
+.imc .good {
+  color: #12db34;
+}
+
+.imc .medium {
+  color: #db6212;
+}
+
+.imc .high {
+  color: #db1912;
+}
+
+/* Estilo para o componente Fetal */
+.fetal * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, sans-serif;
+}
+
+.fetal body {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.fetal #data-container {
+  width: 80%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f8f7f4;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.753);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0.5rem auto;
+}
+
+.fetal h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.fetal .input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin: 0.5rem;
+}
+
+.fetal .input-field input {
+  width: 100%;
+  max-width: 400px;
+  height: 50px;
+  text-align: center;
+  margin: 1rem;
+  font-size: 1rem;
+  border-radius: 3px;
+}
+
+.fetal .button-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
+
+.fetal .button {
+  font-size: 1rem;
+  width: 100%;
+  height: 50px;
+  background-color: #0000ff;
+  color: #f8f7f4;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  margin: 1rem;
+  border-radius: 15px;
+  opacity: 0.7;
+}
+
+.fetal .button:hover {
+  opacity: 1;
+}
+
+.fetal #result {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: black;
+}
+
+.fetal .cafezinho {
+  font-size: 1rem;
+  color: black;
+}
+
+/* Estilo para o footer */
+footer {
+  background-color: #f0f0f0; /* Cor de fundo do footer */
+  padding: 20px; /* Espaçamento interno */
+  text-align: center; /* Alinha o conteúdo centralmente */
+  color: #000;
+}
+
+.footer {
+  display: flex; /* Utiliza flexbox para alinhar itens */
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+}
+
+.pagamentos {
+  display: flex; /* Utiliza flexbox para alinhar itens */
+  flex-wrap: wrap; /* Permite que os itens quebrem para a linha seguinte se necessário */
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+  margin-top: 10px; /* Margem superior */
+}
+
+.pagamentos .donate {
+  margin-right: 10px; /* Margem à direita do formulário de doação */
+}
+
+.pagamentos .cafezinho {
+  margin-right: 10px; /* Margem à direita dos parágrafos 'ou' e 'Um cafézinho no PIX' */
+}
+
+.pagamentos .copy {
+  font-size: 12px; /* Tamanho da fonte do texto de copyright */
+}
+.pagamentos a {
+  color: black; /* Define a cor do texto dos links para preto */
+  text-decoration: none; /* Remove o sublinhado padrão dos links */
+}
+
+.pagamentos a:hover {
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse sobre os links */
+}
+
+/* Ajustes para dispositivos móveis */
+@media only screen and (max-width: 767px) {
+  header {
+    flex-direction: column;
+  }
+
+  .logoEu {
+    width: 60px;
+    height: 60px;
+  }
+
+  .Title {
+    font-size: 1.2rem;
+  }
+
+  #content {
+    flex-direction: column;
+  }
+
+  .imc,
+  .fetal {
+    width: 100%;
+  }
+
+  .imc .container,
+  .fetal #data-container {
+    padding: auto;
+    width: 90%;
+  }
+
+  .imc .form-inputs,
+  .imc .form-control,
+  .imc button,
+  .fetal .input-field,
+  .fetal .button {
+    flex-direction: column;
+  }
+
+  .imc button,
+  .fetal .button {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .imc #calc-btn,
+  .imc #clear-btn,
+  .imc #back-btn {
+    width: 100%;
+  }
+}
